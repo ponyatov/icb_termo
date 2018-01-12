@@ -3,4 +3,7 @@
 
 #include <sensors/sensors.h>
 
+#include <iostream>
+using namespace std;
+
 #endif // _H_HPP
