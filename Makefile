@@ -8,11 +8,22 @@ EXE = ./tmp/exe.exe
 exe: $(EXE)
 	$(EXE)
 
+# source code files
 C = c.c
 H = h.h
-L = -lsensors -lcoap-1
-CFLAGS += -std=gnu11 -I/usr/local/include/coap
-$(EXE): $(C) $(H)
+
+# use [lm]sensors for system monitoring
+L += -lsensors
+
+# use libCoAP IoT protocol library 
+L += -lcoap-1
+## WITH_POSIX required for libcoap/Linux, C99 is minimal for v.4.1.2
+REQ_FOR_COAP = -std=c99 -DWITH_POSIX
+
+# limit C variants for compatibility with non-GCC compilers
+STRICT_C = -std=c89 -Wall -Werror -pedantic
+CFLAGS += $(STRICT_C) $(REQ_FOR_COAP)
+$(EXE): $(C) $(H) Makefile
 	$(CC) $(CFLAGS) -o $@ $(C) $(L)
 
 ## install required packages

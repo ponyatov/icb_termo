@@ -3,7 +3,7 @@
 
 #include <sensors/sensors.h>
 
-//#include "coap.h"
+#include "coap/coap.h"
 
 #include <stdlib.h>
 

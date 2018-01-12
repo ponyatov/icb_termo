@@ -12,36 +12,40 @@ int main(int argc, char *argv[]) {
 
 	sensors_init(NULL);
 
-//	cerr << "sensors_version=" << libsensors_version << endl << endl;
-//
-//	sensors_chip_name const * cn;
-//	int c = 0;
-//	while ((cn = sensors_get_detected_chips(0, &c)) != 0) {
-//		cerr << "chip: " << cn->prefix << " " << cn->path << endl;
-//
-//		sensors_feature const *feat;
-//		int f = 0;
-//		while ((feat = sensors_get_features(cn, &f)) != 0) {
-//			cerr << '\t'  << f << ':' << cn->prefix << '/' << feat->name << endl;
-//
-//			sensors_subfeature const *subf; int s=0;
-//			while ((subf = sensors_get_all_subfeatures(cn, feat, &s)) != 0) {
-//				double val=0;
-//				if (subf->flags & SENSORS_MODE_R) { // readable
-//					int rc = sensors_get_value(cn, subf->number, &val);
-//					if (rc<0)
-//						cerr << "error:" << rc << endl;
-//					else
-//						cerr << "\t\t" << subf->name << '=' << val << endl;
-//				}
-//			}
-//		}
-//	}
-//
-//	sensors_cleanup();
-//
-//	// CoAP server initialize
-//	//coap_address_t serv_addr;
-//	//coap_address_init(&serv_addr);
+	printf("sensors_version=%s\n\n",libsensors_version);
+
+	sensors_chip_name const * cn;
+	int c = 0;
+	while ((cn = sensors_get_detected_chips(0, &c)) != 0) {
+		printf("chip: %s %s\n",cn->prefix,cn->path);
+
+		sensors_feature const *feat;
+		int f = 0;
+		while ((feat = sensors_get_features(cn, &f)) != 0) {
+			#ifdef LOG
+			printf("\t%i:%s/%s\n",f,cn->prefix,feat->name);
+			#endif // LOG
+
+			sensors_subfeature const *subf; int s=0;
+			while ((subf = sensors_get_all_subfeatures(cn, feat, &s)) != 0) {
+				double val=0;
+				if (subf->flags & SENSORS_MODE_R) { // readable
+					int rc = sensors_get_value(cn, subf->number, &val);
+					if (rc<0)
+						fprintf(stderr,"error:%i\n",rc);
+					#ifdef LOG
+					else
+						printf("\t\t%s=%.1f\n",subf->name,val);
+					#endif // LOG
+				}
+			}
+		}
+	}
+
+	sensors_cleanup();
+
+	// CoAP server initialize
+	coap_address_t serv_addr;
+	coap_address_init(&serv_addr);
 
 }
