@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# load ssh keys for authored git servers from ~/.ssh/id_rsa 
+#ssh-add
+
+# pull procedure
+pull () {
+echo $1
+cd src/$1
+git pull&
+cd ../..
+}
+
+pull copper &
+
+# pull current project
+git pull
