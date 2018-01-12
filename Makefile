@@ -1,5 +1,16 @@
 .PHONY: all
-all: packages coap doc
+all: packages coap doc exe
+
+## build & run executable
+
+.PHONY: exe
+exe: ./exe.exe
+	./exe.exe
+C = cpp.cpp
+H = hpp.hpp
+L = -lsensors
+./exe.exe: $(C) $(H)
+	$(CXX) -o $@ $(C) $(L)
 
 ## install required packages
 
