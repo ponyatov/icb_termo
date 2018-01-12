@@ -34,7 +34,7 @@ libcoap: /usr/local/bin/coap-server
 /usr/local/bin/coap-server: src/libcoap/configure
 	rm -rf tmp/libcoap ; mkdir tmp/libcoap ; cd tmp/libcoap ;\
 	../../src/libcoap/configure --prefix=/usr/local --disable-documentation &&\
-	$(MAKE) && sudo make install-strip
+	$(MAKE) && sudo make install-strip && sudo ldconfig
 src/libcoap/configure: src/libcoap/README #autotools
 	cd src/libcoap ; ./autogen.sh && touch configure
 src/libcoap/README:
