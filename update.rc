@@ -12,6 +12,7 @@ cd ../..
 }
 
 pull copper &
+pull libcoap &
 
 # pull current project
-git pull
+git pull &
