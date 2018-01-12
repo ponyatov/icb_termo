@@ -11,7 +11,6 @@ C = cpp.cpp
 H = hpp.hpp
 L = -lsensors -lcoap-1
 CXXFLAGS += -std=gnu++11 
-#-L/usr/local/lib
 $(EXE): $(C) $(H)
 	$(CXX) $(CXXFLAGS) -o $@ $(C) $(L)
 

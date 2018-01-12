@@ -3,6 +3,8 @@
 
 #include <sensors/sensors.h>
 
+#include <coap/libcoap.h>
+
 #include <iostream>
 using namespace std;
 
