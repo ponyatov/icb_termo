@@ -1,0 +1,6 @@
+*~
+*.swp
+*.md.html
+*.o
+tmp/
+
