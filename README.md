@@ -1,8 +1,8 @@
 # IoT/termosensor
 ## интеллектуальный датчик температуры (IoT)
 
-(by) Dmitry Ponyatov, <dponyatov@gmail.com>>, 2018<br>
-(c) ICBCOM LLC http://icbcom.ru, 2018<br>
+(by) Dmitry Ponyatov, <dponyatov@gmail.com>>, 2018  
+(c) ICBCOM LLC http://icbcom.ru, 2018  
 All rights reserved
 
 ### Концепция
