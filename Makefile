@@ -3,14 +3,16 @@ all: packages coap doc exe
 
 ## build & run executable
 
+EXE = ./tmp/exe.exe
 .PHONY: exe
-exe: ./exe.exe
-	./exe.exe
+exe: $(EXE)
+	$(EXE)
 C = cpp.cpp
 H = hpp.hpp
 L = -lsensors
-./exe.exe: $(C) $(H)
-	$(CXX) -o $@ $(C) $(L)
+CXXFLAGS += -std=gnu++11
+$(EXE): $(C) $(H)
+	$(CXX) $(CXXFLAGS) -o $@ $(C) $(L)
 
 ## install required packages
 
