@@ -7,12 +7,13 @@ EXE = ./tmp/exe.exe
 .PHONY: exe
 exe: $(EXE)
 	$(EXE)
-C = cpp.cpp
-H = hpp.hpp
+
+C = c.c
+H = h.h
 L = -lsensors -lcoap-1
-CXXFLAGS += -std=gnu++11 
+CFLAGS += -std=gnu11 -I/usr/local/include/coap
 $(EXE): $(C) $(H)
-	$(CXX) $(CXXFLAGS) -o $@ $(C) $(L)
+	$(CC) $(CFLAGS) -o $@ $(C) $(L)
 
 ## install required packages
 

@@ -3,9 +3,8 @@
 
 #include <sensors/sensors.h>
 
-#include <coap/libcoap.h>
+//#include "coap.h"
 
-#include <iostream>
-using namespace std;
+#include <stdlib.h>
 
 #endif // _H_HPP
