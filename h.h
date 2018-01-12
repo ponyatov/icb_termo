@@ -4,6 +4,7 @@
 #include <sensors/sensors.h>
 
 #include "coap/coap.h"
+#define COAP_PORT 5683 /* default */
 
 #include <stdlib.h>
 
