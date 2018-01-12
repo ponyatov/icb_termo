@@ -1,10 +1,10 @@
 .PHONY: all
-all: packages doc
+all: packages coap doc
 
 ## install required packages
 
-.PHONY: packages gcc libc libcoap autotools
-packages: gcc libc libcoap autotools
+.PHONY: packages gcc libc autotools
+packages: gcc libc autotools
 
 ### GNU toolchain
 
@@ -26,6 +26,9 @@ CPU_NUM = $(shell grep processor /proc/cpuinfo|wc -l)
 MAKE = make -j$(CPU_NUM) 
 
 ## IOT tools and libs
+
+.PHONY: coap libcoap copper
+coap: libcoap copper
 	
 libcoap: /usr/local/bin/coap-server
 /usr/local/bin/coap-server: src/libcoap/configure
@@ -36,6 +39,10 @@ src/libcoap/configure: src/libcoap/README #autotools
 	cd src/libcoap ; ./autogen.sh && touch configure
 src/libcoap/README:
 	git clone -o gh --depth=1 -b master https://github.com/obgm/libcoap.git src/libcoap
+	
+copper: src/copper/README.md
+src/copper/README.md:
+	git clone -o gh --depth=1 -b master https://github.com/mkovatsc/Copper.git src/copper
 
 ## generate documentation
 
