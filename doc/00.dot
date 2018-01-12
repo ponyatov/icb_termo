@@ -1,5 +1,5 @@
 digraph {
-termo -> IoT_device [label=ako,color=blue];
+termo -> IoT -> platform [label=ako,color=blue];
 termo -> Linux [label=use,color=red];
 Linux -> OS [label=ako,color=blue];
 PC -> Linux [label=use,color=red];
