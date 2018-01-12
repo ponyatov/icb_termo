@@ -3,8 +3,8 @@ all: packages coap doc
 
 ## install required packages
 
-.PHONY: packages gcc libc autotools
-packages: gcc libc autotools
+.PHONY: packages gcc libc autotools lmsensors
+packages: gcc libc autotools lmsensors
 
 ### GNU toolchain
 
@@ -21,6 +21,12 @@ libc: /usr/include/stdlib.h
 autotools: /usr/bin/autoreconf
 /usr/bin/autoreconf:
 	sudo apt install autotools-dev
+	
+### extra -dev packages for Debian
+
+lmsensors: /usr/include/sensors/sensors.h
+/usr/include/sensors/sensors.h:
+	sudo apt install libsensors4-dev
 
 CPU_NUM = $(shell grep processor /proc/cpuinfo|wc -l)
 MAKE = make -j$(CPU_NUM) 
