@@ -1,0 +1,9 @@
+digraph {
+x86 -> CPU [label=ako,color=blue];
+ARM -> CPU [label=ako,color=blue];
+MIPS -> CPU [label=ako,color=blue];
+PC -> x86 [label=use,color=red];
+Raspberry -> ARM [label=use,color=red];
+MR3020 -> MIPS [label=use,color=red];
+CPU -> hardware [label=in,color=cyan];
+}

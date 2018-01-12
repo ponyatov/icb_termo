@@ -1,0 +1,19 @@
+digraph {
+termo -> IoT_device [label=ako,color=blue];
+termo -> Linux [label=use,color=red];
+Linux -> OS [label=ako,color=blue];
+PC -> Linux [label=use,color=red];
+Raspberry -> Linux [label=use,color=red];
+MR3020 -> Linux [label=use,color=red];
+PC -> hardware [label=ako,color=blue];
+Raspberry -> hardware [label=ako,color=blue];
+hardware -> platform [label=in,color=cyan];
+OS -> platform [label=in,color=cyan];
+PC104 -> PC [label=ako,color=blue];
+MR3020 -> router -> hardware [label=ako,color=blue];
+PC104 -> embedded_PC [label=ako,color=blue];
+embedded_PC -> PC [label=ako,color=blue];
+Raspberry -> embedded_PC [label=ako,color=blue];
+{rank=same; PC104; Raspberry; MR3020;}
+{rank=same; embedded_PC; PC; router;}
+}
